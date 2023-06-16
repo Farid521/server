@@ -20,7 +20,7 @@ app.post("/mainPost", (req, res) => {
   const data = req.body; // Mendapatkan data yang dikirimkan dalam permintaan POST
 
   // Lakukan operasi lain yang diperlukan dengan data yang diterima
-  console.log(data);
+  console.log(req);
 
   // Kirim respon berhasil
   res.status(200).json({ message: "Data received successfully" });
