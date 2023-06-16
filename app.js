@@ -2,17 +2,21 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-// Import middleware function
-const procces = require("./middleware/procces.js");
+// Middleware untuk mengizinkan aplikasi Express membaca body dengan format JSON
+app.use(express.json());
 
-app.use(express.json()); // Parse JSON request body
+// Endpoint untuk menangani permintaan POST dari URL https://happy-puce-ox.cyclic.app/mainPost
+app.post("/mainPost", (req, res) => {
+  const data = req.body; // Mendapatkan data yang dikirimkan dalam permintaan POST
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+  // Lakukan operasi lain yang diperlukan dengan data yang diterima
+  console.log(data);
+
+  // Kirim respon berhasil
+  res.status(200).json({ message: "Data received successfully" });
 });
 
-app.post("/mainPost", procces);
-
+// Memulai server Express
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Server started on port ${port}`);
 });
